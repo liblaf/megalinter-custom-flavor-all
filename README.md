@@ -1,5 +1,7 @@
 # MegaLinter Custom Flavor: All
 
+[![Docker Image Size](https://img.shields.io/docker/image-size/liblaf/megalinter-custom-flavor-all-megalinter-custom-flavor)](https://hub.docker.com/repository/docker/liblaf/megalinter-custom-flavor-all-megalinter-custom-flavor/general)
+
 This custom MegaLinter aims to have an optimized Docker image size.
 
 It is built from official MegaLinter images, but is maintained on https://github.com/liblaf/megalinter-custom-flavor-all by liblaf
@@ -32,6 +34,7 @@ It is built from official MegaLinter images, but is maintained on https://github
 - [PYTHON_PYRIGHT](https://megalinter.io/latest/descriptors/python_pyright/)
 - [PYTHON_RUFF](https://megalinter.io/latest/descriptors/python_ruff/)
 - [PYTHON_RUFF_FORMAT](https://megalinter.io/latest/descriptors/python_ruff_format/)
+- [RUST_CLIPPY](https://megalinter.io/latest/descriptors/rust_clippy/)
 - [SPELL_CSPELL](https://megalinter.io/latest/descriptors/spell_cspell/)
 - [XML_XMLLINT](https://megalinter.io/latest/descriptors/xml_xmllint/)
 - [YAML_PRETTIER](https://megalinter.io/latest/descriptors/yaml_prettier/)
