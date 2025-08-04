@@ -52,7 +52,7 @@ jobs:
           is-latest: true
           upload-to-ghcr: true
           upload-to-dockerhub: ${{ steps.docker.outcome == 'success' }}
-          dockerhub-repo: ${{ vars.DOCKERHUB_REPO }}
+          dockerhub-repo: ${{ vars.DOCKERHUB_USERNAME }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CUSTOM_FLAVOR_BUILD_REPO: ${{ github.repository }}
