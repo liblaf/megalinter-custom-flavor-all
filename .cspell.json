@@ -6,11 +6,10 @@
     "chktex",
     "cppcheck",
     "dotenv",
+    "golangci",
     "liblaf",
-    "luacheck",
     "pyright",
-    "shfmt",
-    "stylua"
+    "shfmt"
   ],
   "ignorePaths": [
     "**/.cspell.*",
