@@ -30,7 +30,6 @@ It is built from official MegaLinter images, but is maintained on https://github
 - [MARKDOWN_MARKDOWN_LINK_CHECK](https://megalinter.io/latest/descriptors/markdown_markdown_link_check/)
 - [MARKDOWN_MARKDOWN_TABLE_FORMATTER](https://megalinter.io/latest/descriptors/markdown_markdown_table_formatter/)
 - [MARKDOWN_REMARK_LINT](https://megalinter.io/latest/descriptors/markdown_remark_lint/)
-- [PYTHON_PYRIGHT](https://megalinter.io/latest/descriptors/python_pyright/)
 - [PYTHON_RUFF](https://megalinter.io/latest/descriptors/python_ruff/)
 - [PYTHON_RUFF_FORMAT](https://megalinter.io/latest/descriptors/python_ruff_format/)
 - [SPELL_CSPELL](https://megalinter.io/latest/descriptors/spell_cspell/)
