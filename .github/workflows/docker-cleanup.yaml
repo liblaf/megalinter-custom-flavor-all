@@ -16,6 +16,7 @@ jobs:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
           repositories: megalinter-custom-flavor-all-megalinter-custom-flavor
+          dry-run: false
           protected-tags: beta
 
   ghcr:
