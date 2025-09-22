@@ -10,8 +10,6 @@ jobs:
     name: Docker Hub
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v5
       - name: Docker Cleanup
         uses: lostlink/docker-cleanup@v1.0.1
         with:
@@ -26,12 +24,9 @@ jobs:
       packages: write
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-      - name: GitHub Container Registry Cleanup
-        uses: snok/container-retention-policy@v3.0.0
+      - name: GitHub Container Registry Image Cleanup
+        uses: dataaxiom/ghcr-cleanup-action@v1
         with:
-          account: ${{ github.repository_owner }}
-          token: ${{ github.token }}
-          cut-off: 1month
-          image-names: megalinter-custom-flavor-all/megalinter-custom-flavor
+          packages: megalinter-custom-flavor-all/megalinter-custom-flavor
+          exclude-tags: beta,latest
+          keep-n-untagged: 3
