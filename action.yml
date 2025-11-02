@@ -12,7 +12,7 @@ outputs:
 
 runs:
   using: docker
-  image: docker://ghcr.io/liblaf/megalinter-custom-flavor-all/megalinter-custom-flavor:${{ github.action_ref }}
+  image: docker://ghcr.io/liblaf/megalinter-custom-flavor-all/megalinter-custom-flavor:latest
   args:
     - --volume
     - /var/run/docker.sock:/var/run/docker.sock:rw
