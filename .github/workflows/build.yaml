@@ -10,6 +10,8 @@ on:
     types:
       - edited
       - published
+  schedule:
+    - cron: "0 0 * * 0" # Runs at 00:00, only on Sunday
   workflow_dispatch:
     inputs:
       megalinter-version:
@@ -36,12 +38,28 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v5
-      - name: Determine MegaLinter Version Tag
-        id: determine-tag
+      - id: determine-tag
+        name: Determine MegaLinter Version Tag
         run: |-
-          tag='${{ inputs.megalinter-version || github.event.release.tag_name || 'beta' }}'
+          case '${{ github.event_name }}' in
+            'push')
+              tag='beta'
+              latest='false'
+              ;;
+            'release')
+              tag='${{ github.ref_name }}'
+              latest='true'
+              ;;
+            'schedule')
+              tag='latest'
+              latest='true'
+              ;;
+            'workflow_dispatch')
+              tag='${{ inputs.megalinter-version }}'
+              latest='${{ inputs.is-latest }}'
+              ;;
+          esac
           printf 'tag=%s\n' "$tag" >> "$GITHUB_OUTPUT"
-          latest='${{ (inputs.is-latest || github.event_name == 'release') && 'true' || 'false' }}'
           printf 'is-latest=%s\n' "$latest" >> "$GITHUB_OUTPUT"
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
