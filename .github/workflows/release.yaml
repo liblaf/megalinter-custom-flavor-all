@@ -1,0 +1,59 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: tag
+        required: true
+        type: string
+
+env:
+  TARGET_BRANCH: dist/${{ inputs.tag }}
+
+jobs:
+  deploy:
+    name: Deploy
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Create `action.yaml`
+        run: |-
+          mkdir --parents --verbose 'dist'
+          cp --archive --verbose --target-directory='dist' 'README.md'
+          envsubst < 'action.yaml.template' > 'dist/action.yaml'
+        env:
+          IMAGE_TAG: ${{ inputs.tag }}
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: ${{ env.TARGET_BRANCH }}
+          folder: dist
+          tag: ${{ inputs.tag }}
+          single-commit: true
+
+  alias:
+    name: Alias
+    permissions:
+      contents: write
+    needs:
+      - deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          ref: ${{ env.TARGET_BRANCH }}
+      - name: Create Alias Tags
+        run: |-
+          readarray -d '.' -t parts < <(printf '%s' '${{ inputs.tag }}')
+          prefix=''
+          for part in "${parts[@]}"; do
+            prefix="${prefix:+"$prefix."}$part"
+            if [[ $prefix == '${{ inputs.tag }}' ]]; then break; fi
+            git tag "$prefix"
+            git push origin tag "$prefix"
+          done
