@@ -9,6 +9,7 @@ on:
         type: string
 
 env:
+  FORCE_COLOR: 1
   TARGET_BRANCH: dist/${{ inputs.tag }}
 
 jobs:
