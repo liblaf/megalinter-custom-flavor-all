@@ -42,7 +42,7 @@ jobs:
       contents: write
     needs:
       - deploy
-    if: contains(github.ref_name, '.')
+    if: contains(inputs.tag, '.')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

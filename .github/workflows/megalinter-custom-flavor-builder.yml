@@ -29,10 +29,6 @@ env:
   LATEST: false
   TAG: beta
 
-concurrency:
-  group: ${{ github.workflow }} @ ${{ github.ref }}
-  cancel-in-progress: true
-
 jobs:
   build-custom-flavor:
     name: Build Custom MegaLinter Flavor
