@@ -21,11 +21,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
-      - name: Create `action.yaml`
+      - name: Create `action.yml`
         run: |-
           mkdir --parents --verbose 'dist'
           cp --archive --verbose --target-directory='dist' 'README.md'
-          envsubst < 'action.yaml.template' > 'dist/action.yaml'
+          envsubst < 'action.yml.template' > 'dist/action.yml'
         env:
           IMAGE_TAG: ${{ inputs.tag }}
       - name: Deploy
