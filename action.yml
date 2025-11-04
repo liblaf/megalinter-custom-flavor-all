@@ -1,0 +1,23 @@
+# -*- mode: yaml; -*-
+# ref: <https://github.com/oxsecurity/megalinter/blob/main/mega-linter-runner/generators/mega-linter-custom-flavor/templates/action.yml>
+
+name: "MegaLinter Custom Flavor: All"
+
+author: liblaf
+
+description: MegaLinter Custom Flavor All
+
+outputs:
+  has_updated_sources:
+    description: 0 if no source file has been updated, 1 if source files has been updated
+
+runs:
+  using: docker
+  image: docker://ghcr.io/liblaf/megalinter-custom-flavor-all/megalinter-custom-flavor:latest
+  args:
+    - --volume
+    - /var/run/docker.sock:/var/run/docker.sock:rw
+
+branding:
+  icon: check
+  color: green
