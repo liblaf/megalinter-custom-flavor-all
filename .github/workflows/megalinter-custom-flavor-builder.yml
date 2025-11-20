@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - if: github.event_name == 'push'
         name: Determine MegaLinter Version Tag (push)
         run: |-
@@ -95,7 +95,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Trigger Releases
         run: |-
           repository='liblaf/megalinter-custom-flavor-all'
