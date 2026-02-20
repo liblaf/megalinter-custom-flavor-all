@@ -56,6 +56,6 @@ jobs:
           for part in "${parts[@]}"; do
             prefix="${prefix:+"$prefix."}$part"
             if [[ $prefix == '${{ inputs.tag }}' ]]; then break; fi
-            git tag "$prefix"
-            git push origin tag "$prefix"
+            git tag --force "$prefix"
+            git push --force origin tag "$prefix"
           done
