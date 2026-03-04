@@ -59,14 +59,14 @@ jobs:
           printf 'TAG=%s\n' '${{ inputs.megalinter-version }}' >> "$GITHUB_ENV"
           printf 'LATEST=%s\n' '${{ inputs.is-latest }}' >> "$GITHUB_ENV"
       - name: Log in to GitHub Container Registry
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ github.token }}
       - id: login-dockerhub
         name: Log in to Docker Hub
-        uses: docker/login-action@v3
+        uses: docker/login-action@v4
         with:
           registry: docker.io
           username: ${{ vars.DOCKERHUB_USERNAME }}
