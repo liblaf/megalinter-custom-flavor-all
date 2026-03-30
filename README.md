@@ -1,6 +1,6 @@
 # MegaLinter Custom Flavor: All
 
-[![Docker Image Size](https://ghcr-badge.egpl.dev/liblaf/megalinter-custom-flavor-all/megalinter-custom-flavor/size)](https://github.com/liblaf/megalinter-custom-flavor-all/pkgs/container/megalinter-custom-flavor-all%2Fmegalinter-custom-flavor)
+[![Docker Image Size](https://img.shields.io/docker/image-size/liblaf/megalinter-custom-flavor-all-megalinter-custom-flavor)](https://hub.docker.com/repository/docker/liblaf/megalinter-custom-flavor-all-megalinter-custom-flavor/general)
 
 This custom MegaLinter aims to have an optimized Docker image size.
 
@@ -17,9 +17,11 @@ It is built from official MegaLinter images, but is maintained on https://github
 - [CPP_CPPLINT](https://megalinter.io/latest/descriptors/cpp_cpplint/)
 - [CREDENTIALS_SECRETLINT](https://megalinter.io/latest/descriptors/credentials_secretlint/)
 - [ENV_DOTENV_LINTER](https://megalinter.io/latest/descriptors/env_dotenv_linter/)
+- [GIT_GIT_DIFF](https://megalinter.io/latest/descriptors/git_git_diff/)
 - [GO_GOLANGCI_LINT](https://megalinter.io/latest/descriptors/go_golangci_lint/)
 - [GO_REVIVE](https://megalinter.io/latest/descriptors/go_revive/)
 - [JSON_ESLINT_PLUGIN_JSONC](https://megalinter.io/latest/descriptors/json_eslint_plugin_jsonc/)
+- [JSON_JSONLINT](https://megalinter.io/latest/descriptors/json_jsonlint/)
 - [JSON_NPM_PACKAGE_JSON_LINT](https://megalinter.io/latest/descriptors/json_npm_package_json_lint/)
 - [JSON_PRETTIER](https://megalinter.io/latest/descriptors/json_prettier/)
 - [JSON_V8R](https://megalinter.io/latest/descriptors/json_v8r/)
@@ -28,9 +30,25 @@ It is built from official MegaLinter images, but is maintained on https://github
 - [MARKDOWN_MARKDOWN_LINK_CHECK](https://megalinter.io/latest/descriptors/markdown_markdown_link_check/)
 - [MARKDOWN_MARKDOWN_TABLE_FORMATTER](https://megalinter.io/latest/descriptors/markdown_markdown_table_formatter/)
 - [MARKDOWN_REMARK_LINT](https://megalinter.io/latest/descriptors/markdown_remark_lint/)
+- [MARKDOWN_RUMDL](https://megalinter.io/latest/descriptors/markdown_rumdl/)
 - [PYTHON_RUFF](https://megalinter.io/latest/descriptors/python_ruff/)
 - [PYTHON_RUFF_FORMAT](https://megalinter.io/latest/descriptors/python_ruff_format/)
+- [REPOSITORY_CHECKOV](https://megalinter.io/latest/descriptors/repository_checkov/)
+- [REPOSITORY_DEVSKIM](https://megalinter.io/latest/descriptors/repository_devskim/)
+- [REPOSITORY_DUSTILOCK](https://megalinter.io/latest/descriptors/repository_dustilock/)
+- [REPOSITORY_GITLEAKS](https://megalinter.io/latest/descriptors/repository_gitleaks/)
 - [REPOSITORY_GIT_DIFF](https://megalinter.io/latest/descriptors/repository_git_diff/)
+- [REPOSITORY_GOODCHECK](https://megalinter.io/latest/descriptors/repository_goodcheck/)
+- [REPOSITORY_GRYPE](https://megalinter.io/latest/descriptors/repository_grype/)
+- [REPOSITORY_KICS](https://megalinter.io/latest/descriptors/repository_kics/)
+- [REPOSITORY_KINGFISHER](https://megalinter.io/latest/descriptors/repository_kingfisher/)
+- [REPOSITORY_LS_LINT](https://megalinter.io/latest/descriptors/repository_ls_lint/)
+- [REPOSITORY_SECRETLINT](https://megalinter.io/latest/descriptors/repository_secretlint/)
+- [REPOSITORY_SEMGREP](https://megalinter.io/latest/descriptors/repository_semgrep/)
+- [REPOSITORY_SYFT](https://megalinter.io/latest/descriptors/repository_syft/)
+- [REPOSITORY_TRIVY](https://megalinter.io/latest/descriptors/repository_trivy/)
+- [REPOSITORY_TRIVY_SBOM](https://megalinter.io/latest/descriptors/repository_trivy_sbom/)
+- [REPOSITORY_TRUFFLEHOG](https://megalinter.io/latest/descriptors/repository_trufflehog/)
 - [SPELL_CSPELL](https://megalinter.io/latest/descriptors/spell_cspell/)
 - [YAML_PRETTIER](https://megalinter.io/latest/descriptors/yaml_prettier/)
 - [YAML_V8R](https://megalinter.io/latest/descriptors/yaml_v8r/)
@@ -50,7 +68,6 @@ This custom flavor is automatically kept up to date with MegaLinter releases:
 1. **Automatic version sync**: The `check-new-megalinter-version` workflow runs daily, checks for new MegaLinter releases, and automatically creates matching releases in this repository.
 
 2. **Automated builds**: Each release triggers the `megalinter-custom-flavor-builder` workflow, which:
-
    - Builds a Docker image with only the selected linters
    - Publishes to GitHub Container Registry (ghcr.io)
    - Optionally publishes to Docker Hub (if credentials are configured)
