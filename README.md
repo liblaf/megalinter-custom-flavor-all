@@ -4,7 +4,7 @@
 
 This custom MegaLinter aims to have an optimized Docker image size.
 
-It is built from official MegaLinter images, but is maintained on https://github.com/liblaf/megalinter-custom-flavor-all by liblaf
+It is built from official MegaLinter images, but is maintained on <https://github.com/liblaf/megalinter-custom-flavor-all> by liblaf
 
 ## Embedded linters
 
@@ -26,10 +26,6 @@ It is built from official MegaLinter images, but is maintained on https://github
 - [JSON_PRETTIER](https://megalinter.io/latest/descriptors/json_prettier/)
 - [JSON_V8R](https://megalinter.io/latest/descriptors/json_v8r/)
 - [LATEX_CHKTEX](https://megalinter.io/latest/descriptors/latex_chktex/)
-- [MARKDOWN_MARKDOWNLINT](https://megalinter.io/latest/descriptors/markdown_markdownlint/)
-- [MARKDOWN_MARKDOWN_LINK_CHECK](https://megalinter.io/latest/descriptors/markdown_markdown_link_check/)
-- [MARKDOWN_MARKDOWN_TABLE_FORMATTER](https://megalinter.io/latest/descriptors/markdown_markdown_table_formatter/)
-- [MARKDOWN_REMARK_LINT](https://megalinter.io/latest/descriptors/markdown_remark_lint/)
 - [MARKDOWN_RUMDL](https://megalinter.io/latest/descriptors/markdown_rumdl/)
 - [PYTHON_RUFF](https://megalinter.io/latest/descriptors/python_ruff/)
 - [PYTHON_RUFF_FORMAT](https://megalinter.io/latest/descriptors/python_ruff_format/)
@@ -49,6 +45,7 @@ It is built from official MegaLinter images, but is maintained on https://github
 - [REPOSITORY_TRIVY](https://megalinter.io/latest/descriptors/repository_trivy/)
 - [REPOSITORY_TRIVY_SBOM](https://megalinter.io/latest/descriptors/repository_trivy_sbom/)
 - [REPOSITORY_TRUFFLEHOG](https://megalinter.io/latest/descriptors/repository_trufflehog/)
+- [RUST_CLIPPY](https://megalinter.io/latest/descriptors/rust_clippy/)
 - [SPELL_CSPELL](https://megalinter.io/latest/descriptors/spell_cspell/)
 - [YAML_PRETTIER](https://megalinter.io/latest/descriptors/yaml_prettier/)
 - [YAML_V8R](https://megalinter.io/latest/descriptors/yaml_v8r/)
