@@ -66,8 +66,7 @@ PYTHON_RUFF_FORMAT_CLI_LINT_MODE: project
 PYTHON_RUFF_FORMAT_CONFIG_FILE: LINTER_DEFAULT
 
 # Linters / Formats Linters / Markdown
-MARKDOWN_RUMDL_PRE_COMMANDS:
-  - command: wget --output-document='.github/linters/.rumdl.toml' 'https://raw.githubusercontent.com/liblaf/megalinter-custom-flavor-all/refs/heads/main/.github/linters/.rumdl.toml'
+MARKDOWN_RUMDL_CONFIG_FILE: LINTER_DEFAULT
 
 # Linters / Formats Linters / YAML
 YAML_PRETTIER_ARGUMENTS: --no-config
