@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Docker Cleanup
-        uses: lostlink/docker-cleanup@v1.0.1
+        uses: lostlink/docker-cleanup@5e30a5d17353cf6ec0ad8871ccd1f7f17ec73cd9 # v1.0.1
         with:
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: GitHub Container Registry Image Cleanup
-        uses: dataaxiom/ghcr-cleanup-action@v1
+        uses: dataaxiom/ghcr-cleanup-action@cd0cdb900b5dbf3a6f2cc869f0dbb0b8211f50c4 # v1
         with:
           packages: megalinter-custom-flavor-all/megalinter-custom-flavor
           exclude-tags: beta,latest
