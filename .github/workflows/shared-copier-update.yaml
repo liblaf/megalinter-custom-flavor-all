@@ -5,7 +5,7 @@ name: Shared / Copier Update
 
 on:
   schedule:
-    - cron: "0 0 * * 0" # Runs at 00:00, only on Sunday
+    - cron: "0 0 * * 6" # Runs at 00:00, only on Saturday
   workflow_dispatch:
 
 env:
@@ -20,12 +20,12 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     environment:
-      name: Copier
+      name: copier
       deployment: false
     steps:
       - id: auth
         name: Auth
-        uses: liblaf/actions/auth@cadf1f6ac2bed9a0ebc033e74a2c0994813e7f04 # v1
+        uses: liblaf/actions/auth@12ffbdf8f37ab1ff07565b44b643fd8433621cd7 # v1
         with:
           app-id: ${{ vars.APP_ID }}
           private-key: ${{ secrets.PRIVATE_KEY }}
@@ -51,6 +51,7 @@ jobs:
           token: ${{ steps.auth.outputs.token }}
           commit-message: "chore(copier): update from template"
           branch: copier-update/${{ github.ref_name }}
+          delete-branch: true
           sign-commits: true
           title: "chore(copier): update from template"
           body: Automated changes by [${{ github.workflow }}](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) Workflow
@@ -58,4 +59,3 @@ jobs:
             automerge
             copier
           assignees: ${{ github.repository_owner }}
-          reviewers: ${{ github.repository_owner }}
