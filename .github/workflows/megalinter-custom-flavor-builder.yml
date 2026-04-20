@@ -102,7 +102,7 @@ jobs:
         continue-on-error: true
 
       - name: Build MegaLinter Custom Flavor
-        uses: oxsecurity/megalinter/flavors/custom-builder@65ca6f0c92bec4f731e9225824ffdc42631eb95b # main
+        uses: oxsecurity/megalinter/flavors/custom-builder@029d37a3499a0b2d27ed6624c6275b48958cd197 # main
         with:
           megalinter-custom-flavor-builder-tag: ${{ steps.determine-tag.outputs.tag }}
           platform: "linux/amd64"
