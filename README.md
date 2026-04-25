@@ -17,8 +17,6 @@ It is built from official MegaLinter images, but is maintained on <https://githu
 - [CPP_CPPLINT](https://megalinter.io/latest/descriptors/cpp_cpplint/)
 - [ENV_DOTENV_LINTER](https://megalinter.io/latest/descriptors/env_dotenv_linter/)
 - [GO_GOLANGCI_LINT](https://megalinter.io/latest/descriptors/go_golangci_lint/)
-- [JSON_JSONLINT](https://megalinter.io/latest/descriptors/json_jsonlint/)
-- [JSON_NPM_PACKAGE_JSON_LINT](https://megalinter.io/latest/descriptors/json_npm_package_json_lint/)
 - [JSON_PRETTIER](https://megalinter.io/latest/descriptors/json_prettier/)
 - [JSON_V8R](https://megalinter.io/latest/descriptors/json_v8r/)
 - [LATEX_CHKTEX](https://megalinter.io/latest/descriptors/latex_chktex/)
