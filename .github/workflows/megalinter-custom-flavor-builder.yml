@@ -55,7 +55,7 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v6
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
         with:
           fetch-depth: 0
 
@@ -93,7 +93,7 @@ jobs:
           echo "is-latest=$IS_LATEST" >> $GITHUB_OUTPUT
 
       - name: Log in to GitHub Container Registry
-        uses: docker/login-action@v3
+        uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
@@ -101,7 +101,7 @@ jobs:
 
       # Log in to Docker Hub only if credentials are provided
       - name: Log in to Docker Hub
-        uses: docker/login-action@v3
+        uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3
         with:
           registry: docker.io
           username: ${{ vars.DOCKERHUB_USERNAME }}
@@ -113,7 +113,7 @@ jobs:
         run: echo "repo=$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
 
       - name: Build MegaLinter Custom Flavor
-        uses: oxsecurity/megalinter/flavors/custom-builder@main
+        uses: oxsecurity/megalinter/flavors/custom-builder@c0eed718d8df92d64da95ec0539d97b99b16b620 # main
         with:
           megalinter-custom-flavor-builder-tag: ${{ steps.determine-tag.outputs.tag }}
           platform: "linux/amd64"
