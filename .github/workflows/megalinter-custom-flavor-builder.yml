@@ -26,7 +26,7 @@ name: Build & Push MegaLinter Custom Flavor
 
 on:
   release:
-    types: [ edited, published ]
+    types: [edited, published]
   workflow_dispatch:
     inputs:
       megalinter-version:
@@ -43,6 +43,8 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions: {}
+
 jobs:
   build-custom-flavor:
     name: Build Custom MegaLinter Flavor
@@ -53,18 +55,23 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Determine MegaLinter Version Tag
         id: determine-tag
+        env:
+          INPUT_MEGALINTER_VERSION: ${{ inputs.megalinter-version }}
+          INPUT_IS_LATEST: ${{ inputs.is-latest }}
+          EVENT_NAME: ${{ github.event_name }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
         run: |
-          if [ -n "${{ inputs.megalinter-version }}" ]; then
-            TAG="${{ inputs.megalinter-version }}"
+          if [ -n "${INPUT_MEGALINTER_VERSION}" ]; then
+            TAG="${INPUT_MEGALINTER_VERSION}"
             echo "Using workflow input version: $TAG"
-          elif [ "${{ github.event_name }}" == "release" ]; then
-            TAG="${{ github.event.release.tag_name }}"
+          elif [ "${EVENT_NAME}" == "release" ]; then
+            TAG="${RELEASE_TAG}"
             echo "Using release tag: $TAG"
           else
             TAG="beta"
@@ -73,10 +80,10 @@ jobs:
           echo "tag=$TAG" >> $GITHUB_OUTPUT
 
           # Determine is-latest flag
-          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
-            IS_LATEST="${{ inputs.is-latest }}"
+          if [ "${EVENT_NAME}" == "workflow_dispatch" ]; then
+            IS_LATEST="${INPUT_IS_LATEST}"
             echo "Using workflow input is-latest: $IS_LATEST"
-          elif [ "${{ github.event_name }}" == "release" ]; then
+          elif [ "${EVENT_NAME}" == "release" ]; then
             IS_LATEST="true"
             echo "Release event - is-latest: true"
           else
@@ -86,7 +93,7 @@ jobs:
           echo "is-latest=$IS_LATEST" >> $GITHUB_OUTPUT
 
       - name: Log in to GitHub Container Registry
-        uses: docker/login-action@650006c6eb7dba73a995cc03b0b2d7f5ca915bee # v4
+        uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
@@ -94,25 +101,28 @@ jobs:
 
       # Log in to Docker Hub only if credentials are provided
       - name: Log in to Docker Hub
-        uses: docker/login-action@650006c6eb7dba73a995cc03b0b2d7f5ca915bee # v4
+        uses: docker/login-action@v3
         with:
           registry: docker.io
           username: ${{ vars.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
         continue-on-error: true
 
+      - name: Set Lowercase Repository Name
+        id: lowercase-repo
+        run: echo "repo=$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
+
       - name: Build MegaLinter Custom Flavor
-        uses: oxsecurity/megalinter/flavors/custom-builder@0e3ce9b9c8c10effb9b269509cc47ca17cae31c7 # v9
+        uses: oxsecurity/megalinter/flavors/custom-builder@main
         with:
           megalinter-custom-flavor-builder-tag: ${{ steps.determine-tag.outputs.tag }}
           platform: "linux/amd64"
           is-latest: ${{ steps.determine-tag.outputs.is-latest }}
           upload-to-ghcr: "true"
-          upload-to-dockerhub: ${{ vars.DOCKERHUB_USERNAME != '' &&
-            secrets.DOCKERHUB_PASSWORD != '' && 'true' || 'false' }}
+          upload-to-dockerhub: ${{ vars.DOCKERHUB_USERNAME != '' && secrets.DOCKERHUB_PASSWORD != '' && 'true' || 'false' }}
           dockerhub-repo: ${{ vars.DOCKERHUB_REPO }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CUSTOM_FLAVOR_BUILD_REPO: ${{ github.repository }}
+          CUSTOM_FLAVOR_BUILD_REPO: ${{ steps.lowercase-repo.outputs.repo }}
           CUSTOM_FLAVOR_BUILD_REPO_URL: ${{ github.repositoryUrl }}
           CUSTOM_FLAVOR_BUILD_USER: ${{ github.actor }}

@@ -1,7 +1,5 @@
 # MegaLinter Custom Flavor: All
 
-[![Docker Image Size](https://img.shields.io/docker/image-size/liblaf/megalinter-custom-flavor-all-megalinter-custom-flavor)](https://hub.docker.com/repository/docker/liblaf/megalinter-custom-flavor-all-megalinter-custom-flavor/general)
-
 This custom MegaLinter aims to have an optimized Docker image size.
 
 It is built from official MegaLinter images, but is maintained on <https://github.com/liblaf/megalinter-custom-flavor-all> by liblaf
@@ -9,6 +7,7 @@ It is built from official MegaLinter images, but is maintained on <https://githu
 ## Embedded linters
 
 - [ACTION_ACTIONLINT](https://megalinter.io/latest/descriptors/action_actionlint/)
+- [ACTION_ZIZMOR](https://megalinter.io/latest/descriptors/action_zizmor/)
 - [BASH_SHELLCHECK](https://megalinter.io/latest/descriptors/bash_shellcheck/)
 - [BASH_SHFMT](https://megalinter.io/latest/descriptors/bash_shfmt/)
 - [COPYPASTE_JSCPD](https://megalinter.io/latest/descriptors/copypaste_jscpd/)
@@ -17,6 +16,8 @@ It is built from official MegaLinter images, but is maintained on <https://githu
 - [CPP_CPPLINT](https://megalinter.io/latest/descriptors/cpp_cpplint/)
 - [ENV_DOTENV_LINTER](https://megalinter.io/latest/descriptors/env_dotenv_linter/)
 - [GO_GOLANGCI_LINT](https://megalinter.io/latest/descriptors/go_golangci_lint/)
+- [JSON_JSONLINT](https://megalinter.io/latest/descriptors/json_jsonlint/)
+- [JSON_NPM_PACKAGE_JSON_LINT](https://megalinter.io/latest/descriptors/json_npm_package_json_lint/)
 - [JSON_PRETTIER](https://megalinter.io/latest/descriptors/json_prettier/)
 - [JSON_V8R](https://megalinter.io/latest/descriptors/json_v8r/)
 - [LATEX_CHKTEX](https://megalinter.io/latest/descriptors/latex_chktex/)
@@ -55,14 +56,19 @@ This custom flavor is automatically kept up to date with MegaLinter releases:
 
 ## Configuration requirements
 
-### Required: Personal Access Token
+### Optional: Personal Access Token (use with care)
 
-For automatic version checking to work, a `PAT_TOKEN` secret must be configured as a **repository-scoped fine-grained token** with:
+> **Security warning**: Using a Personal Access Token (PAT) is **not recommended**. Open-source projects have been heavily targeted by supply-chain attacks in recent months, and a leaked or compromised PAT can give attackers broad write access to your repository — better safe than sorry!
+> If you do not need fully automatic daily version sync, you can skip the PAT entirely and trigger the `check-new-megalinter-version` workflow manually whenever you want to upgrade.
+
+If you decide automatic daily releases are worth the trade-off, configure a `PAT_TOKEN` secret as a **repository-scoped fine-grained token** with:
 
 - **Repository access**: Only select repositories (select this repository)
 - **Repository permissions**:
   - Contents: Read and write
   - Actions: Read and write
+
+Rotate the token regularly.
 
 See the [Custom Flavors documentation](https://megalinter.io/beta/custom-flavors/) for detailed setup instructions.
 
