@@ -113,7 +113,7 @@ jobs:
         run: echo "repo=$(echo "${GITHUB_REPOSITORY}" | tr '[:upper:]' '[:lower:]')" >> $GITHUB_OUTPUT
 
       - name: Build MegaLinter Custom Flavor
-        uses: oxsecurity/megalinter/flavors/custom-builder@1e997fb67090485d6b8f59b70e540d999bcd76ff # main
+        uses: oxsecurity/megalinter/flavors/custom-builder@17de1e068ea23a6ef9f92f22881afce242a184a2 # main
         with:
           megalinter-custom-flavor-builder-tag: ${{ steps.determine-tag.outputs.tag }}
           platform: "linux/amd64"
