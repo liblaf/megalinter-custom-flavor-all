@@ -22,8 +22,6 @@ words:
   - liblaf
   - mkdocs
   - nvuillam
-  - oxfmt
-  - oxlint
   - pipx
   - rumdl
   - shfmt
