@@ -3,10 +3,6 @@
 # ----------------------------- Common Variables ----------------------------- #
 APPLY_FIXES: all
 DISABLE_ERRORS: true
-DISABLE_LINTERS:
-  # Disabled reason: Bug in eslint-plugin-jsonc: <https://github.com/ota-meshi/eslint-plugin-jsonc/issues/328>
-  # ref: <https://megalinter.io/latest/descriptors/json_eslint_plugin_jsonc/>
-  - JSON_ESLINT_PLUGIN_JSONC
 ENABLE_LINTERS:
   - ACTION_ACTIONLINT
   - ACTION_ZIZMOR

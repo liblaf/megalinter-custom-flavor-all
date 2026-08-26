@@ -5,7 +5,7 @@
 
 This custom MegaLinter aims to have an optimized Docker image size.
 
-It is built from official MegaLinter images, but is maintained on <https://github.com/liblaf/megalinter-custom-flavor-all> by liblaf
+It is built from official MegaLinter images, but is maintained on [liblaf/megalinter-custom-flavor-all](https://github.com/liblaf/megalinter-custom-flavor-all) by liblaf
 
 ## Embedded linters
 
@@ -38,8 +38,8 @@ It is built from official MegaLinter images, but is maintained on <https://githu
 
 Follow [MegaLinter installation guide](https://megalinter.io/latest/install-assisted/), and replace related elements in the workflow.
 
-- GitHub Action: On MegaLinter step in .github/workflows/mega-linter.yml, define `uses: liblaf/megalinter-custom-flavor-all@main`
-- Docker image: Replace official MegaLinter image with `ghcr.io/liblaf/megalinter-custom-flavor-all/megalinter-custom-flavor:latest`
+- **GitHub Action**: On MegaLinter step in `.github/workflows/mega-linter.yml`, define `uses: liblaf/megalinter-custom-flavor-all@main`
+- **Docker image**: Replace official MegaLinter image with `ghcr.io/liblaf/megalinter-custom-flavor-all/megalinter-custom-flavor:latest`
 
 ## How the flavor is generated and updated
 
@@ -93,11 +93,10 @@ If you need to manually trigger a build:
 
 See [full Custom Flavors documentation](https://megalinter.io/beta/custom-flavors/).
 
-## How to use the custom flavor
+## License
 
-Follow [MegaLinter installation guide](https://megalinter.io/latest/install-assisted/), and replace related elements in the workflow.
+A MegaLinter custom flavor is still MegaLinter: this repository and the Docker image it publishes are covered by the [AGPL-3.0 license](https://github.com/oxsecurity/megalinter/blob/main/LICENSE).
 
-- **GitHub Action**: On MegaLinter step in `.github/workflows/mega-linter.yml`, define `uses: liblaf/megalinter-custom-flavor-all@main`
-- **Docker image**: Replace official MegaLinter image with `ghcr.io/liblaf/megalinter-custom-flavor-all/megalinter-custom-flavor:latest`
+The published image is built from the official MegaLinter image and bundles MegaLinter, whose source is available at [oxsecurity/megalinter](https://github.com/oxsecurity/megalinter).
 
-[![MegaLinter is graciously provided by OX Security](https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/images/ox-banner.png)](https://www.ox.security/?ref=megalinter)
+[![MegaLinter is provided by OX Security](https://raw.githubusercontent.com/oxsecurity/megalinter/main/docs/assets/images/ox-banner.png)](https://www.ox.security/?ref=megalinter)
