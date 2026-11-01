@@ -8,7 +8,7 @@ outputs:
 runs:
   using: "docker"
   # You can manually update the Docker image version here, or use the latest tag
-  image: "docker://ghcr.io/liblaf/megalinter-custom-flavor-all/megalinter-custom-flavor:latest@sha256:3a31c45a428b7c4c12f8cee0a05245266d8613228dba01c9c7ed2c6d6cf26337"
+  image: "docker://ghcr.io/liblaf/megalinter-custom-flavor-all/megalinter-custom-flavor:latest@sha256:15cda208fcbc3b2bb4279c043714e26e901b090dc4c60e797a230fbd8c89e466"
 branding:
   icon: "check"
   color: "green"
